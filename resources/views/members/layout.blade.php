@@ -10,7 +10,6 @@
   </head>
   <body>
     <div class="container">
-      <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -20,11 +19,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}/members">Simple CRUD</a>
+            <a class="navbar-brand" href="{{ url('/')}} ">Simple CRUD</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="{{ Request::is('members') ? 'active' : ''}}"><a href="{{ url('/') }}/members">Members</a></li>
+              <li class="{{ Request::is('members') ? 'active' : Request::is('/') ? 'active' : ''}}"><a href="{{ url('/') }}/members">Members</a></li>
               <li class="{{ Request::is('members/create') ? 'active' : ''}}"><a href="{{ url('/') }}/members/create">Add</a></li>
             </ul>
           </div>
