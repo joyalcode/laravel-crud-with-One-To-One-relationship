@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Member;
+use App\Profile;
 use Session;
 class MembersController extends Controller
 {
@@ -35,7 +36,21 @@ class MembersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, $this->validationRules());
-        Member::create($request->all());
+        $member = new Member;
+        $member->first_name = $request->first_name;
+        $member->last_name = $request->last_name;
+        $member->email = $request->email;
+        $member->age = $request->age;
+        $member->save();
+
+        $profile = new Profile;
+        $profile->phone = $request->phone;
+        $profile->address = $request->address; 
+        $profile->qualification = $request->qualification; 
+        $profile->notes = $request->notes; 
+
+        $member->profile()->save($profile);
+
         Session::flash('message', 'New Member has been added successfully.');
         return back();
     }
@@ -72,7 +87,16 @@ class MembersController extends Controller
     public function update(Request $request, Member $member)
     {
         $this->validate($request, $this->validationRules());
-        $member->update($request->all());
+        $member->first_name = $request->first_name;
+        $member->last_name = $request->last_name;
+        $member->email = $request->email;
+        $member->age = $request->age;
+        $member->profile->phone = $request->phone;
+        $member->profile->address = $request->address; 
+        $member->profile->qualification = $request->qualification; 
+        $member->profile->notes = $request->notes;  
+
+        $member->push();
         Session::flash('message', 'Member has been updated successfully.');
         return back();
     }
@@ -96,7 +120,7 @@ class MembersController extends Controller
             'first_name' => 'required|max:255',
             'last_name' => 'required',
             'email' => 'required',
-            'age' => 'required'
+            'age' => 'required|integer'
         ];
     }
 }
