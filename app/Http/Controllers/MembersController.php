@@ -46,7 +46,7 @@ class MembersController extends Controller
         $profile = new Profile;
         $profile->phone = $request->phone;
         $profile->address = $request->address; 
-        $profile->qualification = $request->qualification; 
+        $profile->company = $request->company; 
         $profile->notes = $request->notes; 
 
         $member->profile()->save($profile);
@@ -93,7 +93,7 @@ class MembersController extends Controller
         $member->age = $request->age;
         $member->profile->phone = $request->phone;
         $member->profile->address = $request->address; 
-        $member->profile->qualification = $request->qualification; 
+        $member->profile->company = $request->company; 
         $member->profile->notes = $request->notes;  
 
         $member->push();

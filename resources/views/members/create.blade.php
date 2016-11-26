@@ -37,8 +37,8 @@
          <input type="text" class="form-control" value="{{old('phone')}}" name="phone" id="phone">
       </div>
       <div class="form-group">
-         <label for="email">Qualification</label>
-         <input type="text" class="form-control" value="{{old('qualification')}}" name="qualification" id="qualification">
+         <label for="email">Company</label>
+         <input type="text" class="form-control" value="{{old('company')}}" name="company" id="company">
       </div>
       <div class="form-group">
          <label for="email">Address</label>

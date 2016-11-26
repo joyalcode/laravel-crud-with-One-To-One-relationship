@@ -23,6 +23,7 @@ class CreateMembersTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *

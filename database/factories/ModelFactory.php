@@ -24,3 +24,12 @@ $factory->define(App\Member::class, function (Faker\Generator $faker) {
         'age' => $faker->NumberBetween(18,65)
     ];
 });
+
+$factory->define(App\Profile::class, function ($faker) use ($factory) {
+
+    return [
+
+    	'member_id' => factory(Member::class)->create()->id
+
+    ];
+});
